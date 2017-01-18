@@ -18,10 +18,23 @@ hr {
     font-size: 24px;
     color: #fff;
     text-align: center;
-    margin: auto auto;
+    margin: -13px auto auto;
 }
 
 .home-headline span {
+    background-color: #231F20;
+    padding: 5px 20px;
+}
+
+.section-headline {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin: 40px auto auto;
+}
+
+.section-headline span {
     background-color: #231F20;
     padding: 5px 20px;
 }
