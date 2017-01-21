@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="common-header">
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -19,11 +19,6 @@
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet"/>
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]>
-    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -38,7 +33,7 @@
     <nav class="navbar navbar-default navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Idan's Bookstore</a>
+                <a class="navbar-brand" th:href="@{/}">Idan's Bookstore</a>
             </div>
             <div id="navbar">
                 <ul class="nav navbar-nav navbar-left">
@@ -47,9 +42,9 @@
                            aria-haspopup="true" aria-expanded="false">Books <span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Browse Bookshelf</a></li>
-                            <li><a href="#">Store hours &#38; Directions</a></li>
-                            <li><a href="#">FAQ</a></li>
+                            <li><a th:href="@{/bookshelf}">Browse the bookshelf</a></li>
+                            <li><a th:href="@{/hours}">Store hours &#38; Directions</a></li>
+                            <li><a th:href="@{/faq}">FAQ</a></li>
                         </ul>
                     </li>
                     <form class="navbar-form">
@@ -62,8 +57,9 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Shopping Cart</a></li>
-                    <li><a th:href="@{/login}">My Account</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a sec:authorize="isAnonymous()" th:href="@{/login}">My Account</a></li>
+                    <li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">My Profile</a></li>
+                    <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

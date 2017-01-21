@@ -21,11 +21,15 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
+
+    private final UserSecurityService userSecurityService;
 
     @Autowired
-    private UserSecurityService userSecurityService;
+    public SecurityConfig(Environment env, UserSecurityService userSecurityService) {
+        this.env = env;
+        this.userSecurityService = userSecurityService;
+    }
 
     private BCryptPasswordEncoder passwordEncoder() {
         return SecurityUtility.passwordEncoder();
@@ -35,8 +39,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/css/**",
             "/js/**",
             "/image/**",
+            "/fonts/**",
             "/",
-            "/myAccount"
+            "/newUser",
+            "/forgetPassword",
+            "/login"
     };
 
     @Override
@@ -49,7 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
             .csrf().disable().cors().disable()
-            .formLogin().failureUrl("/login?error").defaultSuccessUrl("/")
+            .formLogin().failureUrl("/login?error")
+//            .defaultSuccessUrl("/")
             .loginPage("/login").permitAll()
             .and()
             .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
