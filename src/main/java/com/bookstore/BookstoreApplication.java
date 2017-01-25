@@ -29,18 +29,32 @@ public class BookstoreApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		User user1 = new User();
-		user1.setFirstName("John");
-		user1.setLastName("Adams");
-		user1.setUsername("j");
-		user1.setPassword(SecurityUtility.passwordEncoder().encode("p"));
-		user1.setEmail("JAdams@gmail.com");
-		Set<UserRole> userRoles = new HashSet<>();
-		Role role1= new Role();
-		role1.setRoleId(1);
-		role1.setName("ROLE_USER");
-		userRoles.add(new UserRole(user1, role1));
-
-		userService.createUser(user1, userRoles);
+//		User user1 = new User();
+//		user1.setFirstName("John");
+//		user1.setLastName("Adams");
+//		user1.setUsername("j");
+//		user1.setPassword(SecurityUtility.passwordEncoder().encode("p"));
+//		user1.setEmail("JAdams@gmail.com");
+//		Set<UserRole> userRoles = new HashSet<>();
+//		Role role1= new Role();
+//		role1.setRoleId(1);
+//		role1.setName("ROLE_USER");
+//		userRoles.add(new UserRole(user1, role1));
+//
+//		userService.createUser(user1, userRoles);
+//
+//		User user2 = new User();
+//		user2.setFirstName("Idan");
+//		user2.setLastName("Busso");
+//		user2.setUsername("idan");
+//		user2.setPassword(SecurityUtility.passwordEncoder().encode("loloftw1234"));
+//		user2.setEmail("idanbusso@gmail.com");
+//		Set<UserRole> userRolesB = new HashSet<>();
+//		Role role2 = new Role();
+//		role2.setRoleId(1);
+//		role2.setName("ROLE_USER");
+//		userRolesB.add(new UserRole(user2, role2));
+//
+//		userService.createUser(user2, userRolesB);
 	}
 }
